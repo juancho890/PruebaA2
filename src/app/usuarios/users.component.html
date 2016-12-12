@@ -1,0 +1,28 @@
+<table class="table table-bordered">
+  <link rel="stylesheet" href="https://bootswatch.com/superhero/bootstrap.min.css"> 
+    <thead>
+        <tr class="body_tabla">
+            <td>Name</td>
+            <td>User Name</td>
+            <td>Mail</td>
+            <td>Phone</td>
+            <td>City</td>
+        </tr>
+    </thead>
+    <tbody class="header_tabla"> 
+<!-- (Solo será visualizado el primer nombre de cada usuario, es decir, el apellido debe ser ocultado y 
+el correo de los usuarios debe ser transformado a minúscula al momento de ser visualizado.)
+-->
+<tr *ngFor="let item of users"  Selector-Directive (click)="SelectorDetail(item)">
+    <td>{{item.name | nombresolo}}</td>
+    <td>{{item.username}}</td>
+    <td>{{item.email | lowercase}}</td>
+    <td>{{item.phone}}</td>
+    <td>{{item.address.city}}</td>   
+          
+          </tr>
+    </tbody>
+</table>
+<!--(???)-->
+<app-detail *ngIf="usrselect"  [user]="usuario"></app-detail>
+

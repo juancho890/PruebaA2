@@ -1,0 +1,96 @@
+<div class="container" *ngIf="!habNuevoUsuario">
+     <link rel="stylesheet" href="https://bootswatch.com/superhero/bootstrap.min.css">
+     
+    <h1>Enter new user</h1>
+    <form [formGroup]="Formulario">
+      <div class="Row">
+        <label for="nombre">Name</label>
+        <span class="Advertencia">*</span>
+        <input type="text" 
+               class="form-control" 
+               id="nombre" 
+               formControlName="nombre" >
+        <div *ngIf="Formulario.controls.nombre.status=='INVALID' && !habForm"  
+          class="alert alert-danger">required</div>
+               
+      </div>
+ <!--NameUser-->     
+        <div class="Row">
+        <label for="usrname">Name user</label>
+        <span class="Advertencia">*</span>
+        <input type="text" 
+               class="form-control" 
+               id="usrname" 
+               formControlName="usrname" >
+      <div *ngIf="Formulario.controls.usrname.status=='INVALID' && !habForm"  
+      class="alert alert-danger">Required</div>
+      </div>
+  <!--Mail-->   
+      <div class="form-group">
+        <label for="email">Mail</label>
+        <input type="text" 
+               class="form-control" 
+               id="email" 
+               formControlName="email" >
+      </div>
+      <div *ngIf="Formulario.controls.email.status=='INVALID' && !habForm"  
+      class="alert alert-danger">The mail must have a valid format</div>
+      
+   <!--Mail-->   
+      <div class="form-group">
+        <label for="tel">Phone</label>
+        <input type="text" 
+               class="form-control" 
+               id="tel" 
+               formControlName="tel" 
+               [(ngModel)]="PhoneBind" 
+               (keydown)="onKey()"     
+               (keyup)="offKey()"                        
+               >
+      </div>
+      <div *ngIf="Formulario.controls.tel.status=='INVALID' && !habForm"  
+      class="alert alert-danger">Must be greater than 6 digits</div>
+ <!--send-->       
+      <button type="submit" class="btn btn-warning btn-lg"(click)="Enviar()">Send</button>
+    </form>
+</div>
+
+<div class="jumbotron" *ngIf="habNuevoUsuario">
+<h1 class="tituloNuevoUsuario" align="center">Create a new user</h1>
+<div class="container">
+ <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Detail</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Name</td>
+        <td>{{DatosRecibidos.nombre}}</td>
+      </tr>
+      <tr>
+        <td>User</td>
+        <td>{{DatosRecibidos.usrname}}</td>
+      </tr>
+      <tr>
+        <td>Mail</td>
+        <td>{{DatosRecibidos.email}}</td>
+      </tr>
+      <tr>
+        <td>Phone</td>
+        <td>{{DatosRecibidos.tel}}</td>
+      </tr>
+       <tr>
+        <td>Id Assigned</td>
+        <td>{{DatosRecibidos.id}}</td>
+      </tr>
+    </tbody>
+     <button  type="submit" class="btn btn-danger btn-small"(click)="Refrescar()">New user</button>
+     <link rel="stylesheet" href="https://bootswatch.com/superhero/bootstrap.min.css">
+  </table>
+</div>
+
+</div>
+
